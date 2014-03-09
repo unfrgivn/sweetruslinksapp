@@ -63,10 +63,6 @@ var app = (function (win) {
         }
         
         if (window.localStorage.getItem("guid")) { //user is already logged in
-        	console.log('Load Users');
-            app.Users.load();
-            
-            console.log('Load Links');
             app.mobileApp.navigate('views/linksView.html');
         }
     };

@@ -12,10 +12,13 @@ app.Links = (function () {
         // Links data source. The Everlive dialect of the Kendo UI DataSource component
         // supports filtering, sorting, paging, and CRUD operations. 
         var linksDataSource = new kendo.data.DataSource({
-             transport: {
+            serverPaging: true,
+    		pageSize: 20,
+            transport: {
                  read: {
                      url: appSettings.api.url + '/link/search',
-                     dataType: "jsonp",
+                     dataType: "jsonp"
+                     /*,
                      data: {
                          guid: window.localStorage.getItem("guid"),
                          srlkey: appSettings.api.srlKey,
@@ -26,13 +29,27 @@ app.Links = (function () {
                          'issortable' : true,
                          'sortcolindex' : 3,
                          'sortdir' : 'desc'
-                     }
-                 }
-             },
+                     }*/
+                 },
+                parameterMap: function(options) {
+                    return {
+                        guid: window.localStorage.getItem("guid"),
+                        srlkey: appSettings.api.srlKey,
+                        'columns' : ['l.srl_id', 'title', 'link', 'l.created', 'link_id', 'nsfw', 'u.user_id'],
+                        'start' : (options.page - 1) * options.pageSize,
+                        'limit' : options.pageSize,
+                        'q' : null,
+                        'issortable' : true,
+                        'sortcolindex' : 3,
+                        'sortdir' : 'desc'
+                    };
+                }
+            },
             schema: {
                 /*data: function(response) {
                     return response.data.links;
-                }*/                
+                }*/        
+                total: function (response) { return 500; },
                 parse: function(response) {
                   var links = [];
                   for (var i = 0; i < response.data.links.length; i++) {
@@ -44,6 +61,7 @@ app.Links = (function () {
                       
                       	var username = user ? user.username : 'Anonymous';
                         var avatar = app.helper.resolveProfilePictureUrl(user);
+                      console.log(username + ' : ' + avatar);
                       
                     var link = {
                       	'id': response.data.links[i].srl_id,
@@ -73,7 +91,7 @@ app.Links = (function () {
                 }
             }
         });
-        
+       
         return {
             links: linksDataSource
         };

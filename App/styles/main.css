@@ -403,7 +403,7 @@
     -webkit-box-shadow: none;
     box-shadow: none;
     overflow: visible;
-    margin-bottom: 1em;
+    margin-bottom: 20px;
 }
 
 #friendsApp .links-view .km-list > li:first-child {
@@ -434,7 +434,7 @@
     display: block;
     margin: 0 0 .5em;
     color: #3598db;
-    font-size: 1.1rem;
+    font-size: 1.1em;
 }
 
 #friendsApp .link-header {
@@ -623,3 +623,10 @@
         background-size: 23px 23px;
     }
 }
+
+.km-flat .km-scroller-pull {
+	margin: 0 0 0 -15px;
+}
+
+.spacer-10 { clear: both; height: 10px; }
+.clearfix { clear: both; }

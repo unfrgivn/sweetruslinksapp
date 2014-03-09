@@ -7,8 +7,10 @@
         </div>
     </header>
 
+    <!--<ul id="links-listview" data-role="listview" data-template="linkTemplate"
+        data-bind="source: links" data-pull-to-refresh="true"></ul>-->
     <ul id="links-listview" data-role="listview" data-template="linkTemplate"
-        data-bind="source: links"></ul>
+        data-source="app.Links.links" data-pull-to-refresh="true" data-endless-scroll="true"></ul>
     <p id="no-links-span" hidden="hidden" class="no-items-msg">
         <b>You have no links yet in your groups.</b>
     </p>
@@ -19,7 +21,7 @@
     <div class="cf">
     	<div class="link-header">
             <div class="user-avatar">
-                <img data-bind="attr:{src: avatar}" alt="styles/images/avatar.png" />
+                <img src="${avatar}" alt="styles/images/avatar.png" />
             </div>
             <div class="user-name">${username}</div>
             <div class="link-time">
@@ -27,7 +29,7 @@
             </div>
     	</div>
         <div class="link-content">
-            <h2 class="link-name" data-role="touch" data-bind="events: { tap: linkSelected }">${title}</h2>
+    		<h2 class="link-name" data-role="touch" data-bind="events: { tap: linkSelected }">${title}</h2>
             <ul class="link-meta">
             	<li><i class="fa-fw fa fa-eye"></i> ${views}</li>
                 <li><i class="fa-fw fa fa-thumbs-up"></i> ${votes}</li>
@@ -38,6 +40,7 @@
                     <a data-role="button" class="user-vote btn btn-vote ${voteStatus}"><i class="fa fa-thumbs-up"></i>  Fist</a>
                 </span>
 			</div>
-        </div>
+		</div>
+        <div class="spacer-10"></div>
     </div>
 </script>
