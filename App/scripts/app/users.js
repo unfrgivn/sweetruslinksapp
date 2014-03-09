@@ -35,6 +35,8 @@ app.Users = (function () {
             usersDataSource.fetch(function(){
               	usersData = this.data();
             });
+            
+            return true;
         }
         
         return {
@@ -49,7 +51,4 @@ app.Users = (function () {
     
     return usersModel;
     
-}());
-
-app.Users.load();
-            
+}());           

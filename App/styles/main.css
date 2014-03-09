@@ -118,6 +118,7 @@
 #friendsApp.km-flat .km-list input[type="password"],
 #friendsApp.km-flat .km-list input[type="email"],
 #friendsApp.km-flat .km-list input[type="date"],
+#friendsApp.km-flat .km-list input[type="url"],
 #friendsApp.km-flat textarea,
 #friendsApp.km-flat select {
     position: static;
@@ -132,7 +133,6 @@
 
 #friendsApp.km-flat .km-list label { 
 	color: rgb(80, 80, 80);
-	cursor: pointer;
 	font-family: 'Lucida Grande';
 	font-size: 15px;
     font-weight: bold;
@@ -276,20 +276,26 @@
     font-size: .75rem;
 }
 
-/* Welcome screen */
-
 #friendsApp .app-logo,
 #friendsApp .app-name {
     margin-top: 1.5em;
 }
 
+/* Welcome screen */
+
+#friendsApp #welcome .app-logo,
+#friendsApp #welcome .app-name {
+    margin-top: 3.5em;
+}
+
 #friendsApp .app-logo {
-    width: 247px;
-    height: 32px;
-    background: transparent url(images/logo-telerik_devcloud.png) no-repeat 0 0;
+    width: 167px;
+    height: 30px;
+    background: transparent url(images/logo-small.png) no-repeat 0 0;
 }
 
 #friendsApp .app-name {
+    font-size: .9rem;
     margin-bottom: 1.5em;
 }
 
@@ -349,7 +355,7 @@
 
 #friendsApp .welcome-scrn .group-wrp .oauth .oauth-item {
     float: left;
-    width: 23%;
+    width: 48%;
     margin: 0 1%;
 }
 
@@ -441,17 +447,19 @@
 }
 
 #friendsApp .link-content .link-name,
-#friendsApp .add-activity-view .link-name,
 #friendsApp .link-content .time-span {
     font-weight: 600;
 }
 
-#friendsApp .add-activity-view .link-name,
 #friendsApp .link-content .link-name {
     display: block;
     margin: 0 0 .5em;
     color: #3598db;
     font-size: 1.1em;
+}
+
+#friendsApp .links-view .km-list > li .nsfw .link-name {
+    color: #ed5757;
 }
 
 #friendsApp .link-header {
@@ -462,6 +470,10 @@
     padding-bottom: 5px;
     margin-bottom: 5px;
     height: 35px;
+}
+
+#friendsApp .links-view .km-list > li .nsfw .link-header {
+    background: rgba(205, 0, 0, 0.25);
 }
 
 #friendsApp .link-header .user-avatar {
@@ -596,8 +608,8 @@
 (min-resolution: 144dpi) { 
     
     #friendsApp .app-logo {
-        background-image: url(images/logo-telerik_devcloud@2x.png);
-        background-size: 247px 32px;
+        background-image: url(images/logo-small@2x.png);
+        background-size: 167px 30px;
     }
     
     #login-form .username:before {

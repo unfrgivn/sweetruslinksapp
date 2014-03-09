@@ -62,8 +62,12 @@ var app = (function (win) {
             analytics.Start();
         }
         
-        if (window.localStorage.getItem("guid")) { //user is already logged in
+         //Init users data if logged in
+        if (window.localStorage.getItem("guid")) {
+            app.Users.load();
             app.mobileApp.navigate('views/linksView.html');
+        } else {
+            app.mobileApp.navigate('views/loginView.html');
         }
     };
 
@@ -118,7 +122,8 @@ var app = (function (win) {
 
         // Current user logout
         logout: function () {
-            return el.Users.logout();
+            window.localStorage.removeItem ("guid");
+            return true;
         }
     };
     

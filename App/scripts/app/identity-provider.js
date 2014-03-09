@@ -53,6 +53,10 @@ var IdentityProvider = function (config) {
             ref.close();
             var token = getParameterByName('access_token', loc);
             callback(token);
-        }
+        } else if (loc.indexOf('code=') != -1) {
+            ref.close();
+            var token = getParameterByName('code', loc);
+            callback(token);
+        } 
     }
 }

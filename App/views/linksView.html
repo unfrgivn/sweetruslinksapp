@@ -18,7 +18,7 @@
 
 <!-- Activities ListView Template -->
 <script type="text/x-kendo-template" id="linkTemplate">
-    <div class="cf">
+    <div class="cf #if(nsfw == 1){# nsfw #}#">
     	<div class="link-header">
             <div class="user-avatar">
                 <img src="${avatar}" alt="styles/images/avatar.png" />

@@ -66,6 +66,7 @@ app.Links = (function () {
                           'link_id': response.data.links[i].link_id,
                           'link': response.data.links[i].link,
                           'title': response.data.links[i].title,
+                          'nsfw': response.data.links[i].nsfw,
                           //created: app.helper.formatDate(response.data.links[i].created)
                           'created': response.data.links[i].relativetime,
                           'views': response.data.links[i].views ? response.data.links[i].views : 0,
@@ -87,10 +88,12 @@ app.Links = (function () {
                     $('#no-links-span').show();
                 }
                 
+                /*
                 // create a template instance
                 var template = kendo.template($("#linkTemplate").html());
                 // render a view by passing the data to a template
-                kendo.render(template, this);
+                kendo.render(template, this);*/
+                
             }
         });
        
@@ -148,21 +151,11 @@ app.Links = (function () {
             	});*/
             });
         };
-        
-        // Navigate to app home
-        var navigateHome = function () {
-            
-            app.mobileApp.navigate('#welcome');
-        };
-        
+
         // Logout user
-        var logout = function () {
-            
-            app.helper.logout()
-            .then(navigateHome, function (err) {
-                app.showError(err.message);
-                navigateHome();
-            });
+        var logout = function () {            
+            app.helper.logout();
+            app.mobileApp.navigate('views/loginView.html');
         };
         
         return {

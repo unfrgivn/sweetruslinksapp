@@ -34,20 +34,29 @@ app.AddLink = (function () {
             // Validating of the required fields
             if (validator.validate()) {
                 
+                app.mobileApp.showLoading();
+                
                 $.getJSON(appSettings.api.url + '/link/post?callback=?', { 
                     guid: window.localStorage.getItem("guid"),
                     srlkey: appSettings.api.srlKey,
                     link_url: $url.val(),
                     link_title: $title.val() != '' ? $title.val() : null,
-                    link_nsfw: $nsfw.prop('checked'),
+                    link_nsfw: $nsfw.prop('checked') ? 1 : 0,
                     link_groups: 3
                 }).done(function(response) {
                     if (response.data) {
-                      app.mobileApp.navigate('#:back');
+						var links = app.Links.links;
+                        links.read(); //Refresh link view
+                        
+                        app.mobileApp.hideLoading();
+                        
+                        app.mobileApp.navigate('#:back');                      
                     }
                 }).fail(function( jqxhr, textStatus, error ) {
-                    
+                    app.mobileApp.hideLoading();
+                    var err = textStatus + ", " + error;
                 });
+                
                 
                 // Adding new link to Links model
                 /*

@@ -1,0 +1,31 @@
+<div data-role="view" id="login" data-layout="default" class="welcome-scrn form-view" data-model="app.Login" data-init="app.Login.init" data-show="app.Login.show">
+    <header data-role="header"></header>
+    <h1 class="app-logo hide-text center-block">Sweet<small>Rus</small>Links</h1>
+    <h2 class="center-text">Login</h2>
+<form id="login-form">
+    <ul data-role="listview" data-style="inset">
+        <li class="username"><input type="text" id="loginUsername" placeholder="Username" required validationMessage="Username is required!" /></li>
+        <li class="password"><input type="password" id="loginPassword" placeholder="Password" required validationMessage="Password is required!" /></li>
+    </ul>
+</form>
+<ol class="group-wrp">
+    <li>
+        <span id="login" data-role="touch" data-bind="events: { tap: login }">
+            <a data-role="button" class="btn btn-login">Login</a>
+        </span>
+    </li>
+    <li class="oauth cf">
+        <span id="loginWithFacebook" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithFacebook }">
+            <a data-role="button" class="btn btn-login-fb">Login with Facebook</a>
+        </span>
+        <span id="loginWithGoogle" class="oauth-item" data-role="touch" data-bind="events: { tap: loginWithGoogle }">
+            <a data-role="button" class="btn btn-login-google">Login with Google</a>
+        </span>
+    </li>
+    <!--<li class="signup">
+<a data-role="button" href="views/signupView.html" class="btn-signup">Don't have an account?</a>
+</li>-->
+</ol>
+    
+<div data-role="footer"><p>&copy; <span data-bind="text: getYear"></span> Sweetruslinks, LLC.</p></div>
+</div>
