@@ -1,0 +1,34 @@
+<div data-role="view" id="share" data-layout="default" data-transition="overlay:down" class="add-link-view"
+    data-init="app.AddLink.init" data-show="app.AddLink.show" data-model="app.AddLink">
+    <header data-role="header">
+        <div data-role="navbar">
+            Add Sweet Link
+            <a class="nav-button nav-button-cancel" data-align="left" data-role="backbutton">Cancel</a>
+            <!--<a class="nav-button nav-button-post" data-align="right" data-role="button" data-bind="click: saveLink">Post</a>-->
+        </div>
+    </header>
+
+    <form id="add-link-form">
+	<ul data-role="listview" data-style="inset">
+        <li>
+            <input type="text" id="txtUrl" class="k-textbox" placeholder="Paste URL Here" required validationMessage="URL is required!" />
+        </li>
+        <li>
+        	<input type="text" id="txtTitle" placeholder="Change the Link Title (optional)" />
+        </li>
+        <li>
+            <label for="chkNsfw">
+        	<input type="checkbox" id="chkNsfw" />
+            NSFW</label>
+        </li>
+    </ul>    
+        <div id="login" data-role="touch" data-bind="events: { tap: saveLink }">
+        	<a data-role="button" class="btn btn-post">Post Link</a>
+        </div>
+    </form>
+    
+    
+    
+    
+
+</div>
