@@ -130,6 +130,15 @@
     padding: .4em .2em;
 }
 
+#friendsApp.km-flat .km-list label { 
+	color: rgb(80, 80, 80);
+	cursor: pointer;
+	font-family: 'Lucida Grande';
+	font-size: 15px;
+    font-weight: bold;
+    padding-left: 16px;
+}
+
 /* Buttons */
 
 #friendsApp .btn {
@@ -192,6 +201,14 @@
 #friendsApp .btn-vote.on {
     background-color: #3598db;
     color: #fff;
+}
+
+#friendsApp .btn-post {
+    display: block;
+    background-color: #3598db;
+    overflow: hidden;
+    margin: 0 1em;
+    text-align: center;    
 }
 
 #friendsApp .km-header .nav-button {
