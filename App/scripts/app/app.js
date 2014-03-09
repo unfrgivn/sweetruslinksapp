@@ -61,6 +61,14 @@ var app = (function (win) {
         if (analytics.isAnalytics()) {
             analytics.Start();
         }
+        
+        if (window.localStorage.getItem("guid")) { //user is already logged in
+        	console.log('Load Users');
+            app.Users.load();
+            
+            console.log('Load Links');
+            app.mobileApp.navigate('views/linksView.html');
+        }
     };
 
     // Handle "deviceready" event
@@ -77,10 +85,9 @@ var app = (function (win) {
     var AppHelper = {
 
         // Return user profile picture url
-        resolveProfilePictureUrl: function (id) {
-
-            if (id && id !== emptyGuid) {
-                return el.Files.getDownloadUrl(id);
+        resolveProfilePictureUrl: function (user) {
+            if (user !== undefined && user.avatar) {
+                return user.avatar;
             } else {
                 return 'styles/images/avatar.png';
             }
@@ -143,6 +150,5 @@ var app = (function (win) {
         everlive: el,
         getYear: getYear
     };
-
 }(window));
 

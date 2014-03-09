@@ -59,7 +59,77 @@ app.Login = (function () {
 
             var username = $loginUsername.val();
             var password = $loginPassword.val();
+			var guid = null;
+            
+            
+            
+            /*
+            var remoteDataSource = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        url: srlAPI,
+                        dataType: "jsonp",
+                        data: {
+                            username: username,
+                			md5pass: $.md5(password)
+                        }
+                    }
+                },
+                schema: {
+                    data: function(response) {
+                    	return response.data;
+                    }
+  				}
+            });
+           
+            remoteDataSource.fetch(function() {
+                //guid = this.data();
+                //console.log(guid);
+                //window.localStorage.setItem("guid", guid);
+            })*/
+            
+            /*
+            $.getJSON(srlAPI,
+               {
+                   
+               }, function(response) {
+                   
+            		console.debug(response);
+               })).fail(jqxhr, textStatus, error) { 
+               		console.log('error'); 
+            })
+*/            
+            
+            $.getJSON(appSettings.api.url + '/user/login?callback=?', { 
+                username: username,
+                md5pass: $.md5(password) 
+            })
+              .done(function(response) {
+                guid = response.data;
+                  window.localStorage.setItem("guid", guid);
+              })
+              .fail(function( jqxhr, textStatus, error ) {
+                var err = textStatus + ", " + error;
+                console.log( "Request Failed: " + err );
+            }).then(function () {
+                // EQATEC analytics monitor - track login type
+                if (isAnalytics) {
+                    analytics.TrackFeature('Login.Regular');
+                }
+                
+                //return app.Users.load();
+            }).then(function () {
 
+                app.mobileApp.navigate('views/linksView.html');
+            })
+            .then(null,
+                  function (err) {
+                      app.showError(err.message);
+                  }
+            );
+            
+            
+/*                             
             // Authenticate using the username and password
             app.everlive.Users.login(username, password)
             .then(function () {
@@ -78,7 +148,7 @@ app.Login = (function () {
                   function (err) {
                       app.showError(err.message);
                   }
-            );
+            );*/
         };
 
         // Authenticate using Facebook credentials

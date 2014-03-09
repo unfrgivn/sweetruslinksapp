@@ -1,0 +1,43 @@
+<div data-role="view" id="view-all-links" data-layout="default" class="links-view" data-model="app.Links">
+    <header data-role="header">
+        <div data-role="navbar">
+            Sweet Links
+            <a class="nav-button nav-button-back hide-text" data-align="left" data-role="backbutton" data-click="app.Links.logout">Log out</a>
+            <a class="nav-button nav-button-add hide-text" data-align="right" data-role="button" href="views/addLinkView.html">Add</a>
+        </div>
+    </header>
+
+    <ul id="links-listview" data-role="listview" data-template="linkTemplate"
+        data-bind="source: links"></ul>
+    <p id="no-links-span" hidden="hidden" class="no-items-msg">
+        <b>You have no links yet in your groups.</b>
+    </p>
+</div>
+
+<!-- Activities ListView Template -->
+<script type="text/x-kendo-template" id="linkTemplate">
+    <div class="cf">
+    	<div class="link-header">
+            <div class="user-avatar">
+                <img data-bind="attr:{src: avatar}" alt="styles/images/avatar.png" />
+            </div>
+            <div class="user-name">${username}</div>
+            <div class="link-time">
+                <time class="time-span">${created} ago</time>
+            </div>
+    	</div>
+        <div class="link-content">
+            <h2 class="link-name" data-role="touch" data-bind="events: { tap: linkSelected }">${title}</h2>
+            <ul class="link-meta">
+            	<li><i class="fa-fw fa fa-eye"></i> ${views}</li>
+                <li><i class="fa-fw fa fa-thumbs-up"></i> ${votes}</li>
+			</ul>
+            
+            <div class="link-buttons">
+                <span data-role="touch" data-bind="events: { tap: vote }">
+                    <a data-role="button" class="user-vote btn btn-vote ${voteStatus}"><i class="fa fa-thumbs-up"></i>  Fist</a>
+                </span>
+			</div>
+        </div>
+    </div>
+</script>
