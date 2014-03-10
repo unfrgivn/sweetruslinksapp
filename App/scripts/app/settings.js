@@ -4,11 +4,6 @@
 
 var appSettings = {
     
-    everlive: {
-        apiKey: 'dBmtzoh9ZjhlJTbb', // Put your Everlive API key here
-        scheme: 'http'
-    },
-    
     eqatec: {
         productKey: '1cfa0f0ab89d49a4a0825ddcbbc7e966',  // Put your EQATEC product key here
         version: '1.0.0.0' // Put your application version here

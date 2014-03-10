@@ -24,13 +24,6 @@ var app = (function (win) {
         return true;
     });
     
-    var isApiKeySet = (appSettings.everlive.apiKey !== '$EVERLIVE_API_KEY$');
-    
-    if (!isApiKeySet) {
-        alert('Everlive API Key is not set.');
-        return;
-    }
-    
     // Handle device back button tap
     var onBackKeyDown = function(e) {
 
@@ -74,12 +67,6 @@ var app = (function (win) {
     // Handle "deviceready" event
     document.addEventListener('deviceready', onDeviceReady, false);
 
-    // Initialize Everlive SDK
-    var el = new Everlive({
-        apiKey: appSettings.everlive.apiKey,
-        scheme: appSettings.everlive.scheme
-    });
-    
     var emptyGuid = '00000000-0000-0000-0000-000000000000';
     
     var AppHelper = {
@@ -148,7 +135,6 @@ var app = (function (win) {
         showError: showError,
         mobileApp: mobileApp,
         helper: AppHelper,
-        everlive: el,
         getYear: getYear
     };
 }(window));

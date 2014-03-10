@@ -158,11 +158,17 @@ app.Links = (function () {
             app.mobileApp.navigate('views/loginView.html');
         };
         
+        // Search links
+        var search = function () { 
+            app.mobileApp.navigate('views/searchView.html');
+        };
+        
         return {
             links: linksModel.links,
             vote: linkVote,
             linkSelected: linkSelected,
-            logout: logout
+            logout: logout,
+            search: search
         };
         
     }());
